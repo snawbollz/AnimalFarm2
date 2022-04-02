@@ -69,11 +69,34 @@ void Barn::feedAnimals()
 
 void Barn::outToPasture(int i) 
 {
-	std::cout << Animal::getName << " the " << Animal::Animal << "is output pasture.";
-	double weight = myAnimals[i]getweight();
-	double topWeight = getTopWeight();
-	if (weight >= topWeight) {
+	std::cout << myAnimals[i]->getName() << " has exceeded the top weight of " << myAnimals[i]->getTopWeight() << "\n";
+	std::cout << Animal::getName << " the " << Animal::getType << "is output pasture, and has been replace with ";
 
+	Cow* CowPTR = dynamic_cast<Cow*> (myAnimals[i]);
+	if (CowPTR != nullptr)
+	{
+		delete myAnimals[i];
+		myAnimals[i] = new Cow("Cane's", 500, 50);
+		std::cout << myAnimals[i]->getName() << "\n";
+		return;
+	}
+
+	Chicken* ChickPTR = dynamic_cast<Chicken*> (myAnimals[i]);
+	if (ChickPTR != nullptr)
+	{
+		delete myAnimals[i];
+		myAnimals[i] = new Chicken("Eggward", 100, 10);
+		std::cout << myAnimals[i]->getName() << "\n";
+		return;
+	}
+
+	Horse* HorsePTR = dynamic_cast<Horse*> (myAnimals[i]);
+	if (HorsePTR != nullptr)
+	{
+		delete myAnimals[i];
+		myAnimals[i] = new Horse("Apollo", 750, 80);
+		std::cout << myAnimals[i]->getName() << "\n";
+		return;
 	}
 }
 
