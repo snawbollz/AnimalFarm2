@@ -1,0 +1,102 @@
+#pragma once
+
+#include <vector>
+#include "Chicken.h"
+#include "Cow.h"
+#include "Horse.h"
+#include "Animal.h"
+
+#ifndef BARN_H
+#define BARN_H
+
+class Barn {
+private:
+	Animal* myAnimals[15];
+	int numAnimals;
+public:
+	Barn();
+	void feedAnimals();
+	void outToPasture(int i);
+	~Barn();
+	/*remove old feed methods
+	void feedChickens();
+	void feedCows();
+	void feedHorses();
+	*/
+};
+#endif // !BARN_H
+
+Barn::~Barn() {
+	for (int i = 0; i < numAnimals; i++) {
+		delete myAnimals[i];
+	}
+}
+
+Barn::Barn() {
+	myAnimals[0] = new Cow("New cow", 50, 50);
+
+	myAnimals[1] = new Chicken("Joe", 5, 5);
+	myAnimals[2] = new Chicken("Big John", 17.75, 30);
+
+	myAnimals[3] = new Cow("Fsteak", 20, 100);
+	myAnimals[4] = new Cow("Cheese", 19.10, 85.5);
+
+	myAnimals[5] = new Horse("Juan", 40, 200);
+	myAnimals[6] = new Horse("Trent", 45.25, 210.5);
+	myAnimals[7] = new Horse("Shawn", 40, 100);
+
+	myAnimals[8] = new Cow("Milk", 19.10, 85.5);
+	myAnimals[9] = new Cow("test", 19.10, 85.5);
+
+	myAnimals[10] = new Chicken("Small John", 17.75, 30);
+	myAnimals[11] = new Chicken("Medium John", 17.75, 30);
+
+	myAnimals[12] = new Horse("Mustang", 20, 75);
+	myAnimals[13] = new Horse("Mustang", 20, 75);
+
+	myAnimals[14] = new Cow("Chick-fil-a", 20, 120);
+}
+
+void Barn::feedAnimals()
+{
+	for (int i = 0; i < sizeof(myAnimals)/sizeof(Animal*); i++) {
+		myAnimals[i]->speak();
+		std::cout << "\n";
+		myAnimals[i]->eat();
+		std::cout<<"\n";
+	}
+}
+
+void Barn::outToPasture(int i) 
+{
+	std::cout << Animal::getName << " the " << Animal::Animal << "is output pasture.";
+	double weight = myAnimals[i]getweight();
+	double topWeight = getTopWeight();
+	if (weight >= topWeight) {
+
+	}
+}
+
+/*
+
+void Barn::feedChickens() {
+	for (int i = 0; i < coop.size(); i++) {
+		coop[i].eat();
+		std::cout << "\n";
+	}
+}
+
+void Barn::feedCows() {
+	for (int i = 0; i < pen.size(); i++) {
+		pen[i].eat();
+		std::cout << "\n";
+	}
+}
+
+void Barn::feedHorses() {
+	for (int i = 0; i < stalls.size(); i++) {
+		stalls[i].eat();
+		std::cout << "\n";
+	}
+}
+*/
