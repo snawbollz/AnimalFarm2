@@ -12,17 +12,13 @@
 class Barn {
 private:
 	Animal* myAnimals[15];
-	int numAnimals;
+	int numAnimals = sizeof(myAnimals) / sizeof(Animal*);
 public:
 	Barn();
 	void feedAnimals();
 	void outToPasture(int i);
 	~Barn();
-	/*remove old feed methods
-	void feedChickens();
-	void feedCows();
-	void feedHorses();
-	*/
+
 };
 #endif // !BARN_H
 
@@ -45,8 +41,8 @@ Barn::Barn() {
 	myAnimals[6] = new Horse("Trent", 45.25, 210.5);
 	myAnimals[7] = new Horse("Shawn", 40, 100);
 
-	myAnimals[8] = new Cow("Milk", 19.10, 85.5);
-	myAnimals[9] = new Cow("test", 19.10, 85.5);
+	myAnimals[8] = new Cow("Milk", 90, 190.5);
+	myAnimals[9] = new Cow("test", 110, 85.5);
 
 	myAnimals[10] = new Chicken("Small John", 17.75, 30);
 	myAnimals[11] = new Chicken("Medium John", 17.75, 30);
@@ -54,7 +50,7 @@ Barn::Barn() {
 	myAnimals[12] = new Horse("Mustang", 20, 75);
 	myAnimals[13] = new Horse("Mustang", 20, 75);
 
-	myAnimals[14] = new Cow("Chick-fil-a", 20, 120);
+	myAnimals[14] = new Cow("Thicc", 20, 120);
 }
 
 void Barn::feedAnimals()
@@ -64,19 +60,24 @@ void Barn::feedAnimals()
 		std::cout << "\n";
 		myAnimals[i]->eat();
 		std::cout<<"\n";
+
+		if (myAnimals[i]->getWeight() >= myAnimals[i]->getTopWeight()) {
+			outToPasture(i);
+		}
 	}
+
 }
 
 void Barn::outToPasture(int i) 
 {
 	std::cout << myAnimals[i]->getName() << " has exceeded the top weight of " << myAnimals[i]->getTopWeight() << "\n";
-	std::cout << Animal::getName << " the " << Animal::getType << "is output pasture, and has been replace with ";
+	std::cout << myAnimals[i]->getName() << " the " << myAnimals[i]->getType() << "is output pasture, and has been replace with ";
 
 	Cow* CowPTR = dynamic_cast<Cow*> (myAnimals[i]);
 	if (CowPTR != nullptr)
 	{
 		delete myAnimals[i];
-		myAnimals[i] = new Cow("Cane's", 500, 50);
+		myAnimals[i] = new Cow("McDonalds", 500, 50);
 		std::cout << myAnimals[i]->getName() << "\n";
 		return;
 	}
@@ -98,6 +99,7 @@ void Barn::outToPasture(int i)
 		std::cout << myAnimals[i]->getName() << "\n";
 		return;
 	}
+	std::cout << "\n";
 }
 
 /*

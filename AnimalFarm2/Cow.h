@@ -43,11 +43,11 @@ void Cow::eat() {
 }
 
 void Cow::speak() {
-	std::cout << "Moo!";
+	std::cout << "\nMoo!";
 }
 
 double Cow::getTopWeight() {
-	return 1500;
+	return 150;
 }
 
 inline std::string Cow::getType()

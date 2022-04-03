@@ -44,7 +44,7 @@ void Horse::eat() {
 }
 
 void Horse::speak() {
-	std::cout << "Neigh!";
+	std::cout << "\nNeigh!";
 }
 
 double Horse::getTopWeight() {

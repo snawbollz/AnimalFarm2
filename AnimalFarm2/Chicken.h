@@ -43,7 +43,7 @@ void Chicken::eat() {
 }
 
 void Chicken::speak() {
-	std::cout << "Cluck!";
+	std::cout << "\nCluck!";
 }
 
 double Chicken::getTopWeight() {

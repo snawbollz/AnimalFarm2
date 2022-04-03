@@ -16,14 +16,14 @@ public:
 	std::string getName()const;
 	double getWeight()const;
 	double getHeight()const;
-	virtual std::string getType()const;
 	void setName(std::string n);
 	void setWeight(double);
 	void setHeight(double);
 	//"virtual" makes the eat work in the subclass
 	virtual void eat();
 	virtual void speak() = 0;
-	virtual double getTopWeight() = 0;
+	virtual double getTopWeight();
+	virtual std::string getType();
 };
 #endif // !BARN_H
 
@@ -47,10 +47,7 @@ double Animal::getHeight()const {
 	return height;
 }
 
-std::string Animal::getType() const
-{
 
-}
 
 std::string Animal::getName()const {
 	return name;
@@ -81,5 +78,10 @@ void Animal::speak() {
 }
 
 double Animal::getTopWeight() {
+	return double();
+}
 
+std::string Animal::getType()
+{
+	return std::string();
 }
