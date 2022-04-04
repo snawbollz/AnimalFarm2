@@ -20,9 +20,9 @@ public:
 void Horse::gainWeight() {
 	double tempW = 0.0;
 	tempW = Animal::getWeight();
-	tempW = tempW + 6.75;
+	tempW = tempW + 50;
 	Animal::setWeight(tempW);
-	std::cout << Animal::getName() + " the Horse gained 6.75 pounds." << "\n";
+	std::cout << Animal::getName() + " the Horse gained 50 pounds." << "\n";
 }
 
 Horse::Horse() {
@@ -48,7 +48,7 @@ void Horse::speak() {
 }
 
 double Horse::getTopWeight() {
-	return 1500;
+	return 2200;
 }
 
 std::string Horse::getType()

@@ -47,7 +47,7 @@ void Cow::speak() {
 }
 
 double Cow::getTopWeight() {
-	return 150;
+	return 1500;
 }
 
 inline std::string Cow::getType()

@@ -8,7 +8,9 @@ int main() {
 	//std::cout << "Hello World!\n";
 
 	Barn b;
+	b.showAll();
 	b.feedAnimals();
+	b.showAll();
 
 	return 0;
 }

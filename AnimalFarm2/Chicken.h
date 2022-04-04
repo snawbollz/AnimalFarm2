@@ -47,7 +47,7 @@ void Chicken::speak() {
 }
 
 double Chicken::getTopWeight() {
-	return 20;
+	return 12;
 }
 
 inline std::string Chicken::getType()

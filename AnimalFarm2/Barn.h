@@ -15,6 +15,7 @@ private:
 	int numAnimals = sizeof(myAnimals) / sizeof(Animal*);
 public:
 	Barn();
+	void showAll();
 	void feedAnimals();
 	void outToPasture(int i);
 	~Barn();
@@ -29,13 +30,13 @@ Barn::~Barn() {
 }
 
 Barn::Barn() {
-	myAnimals[0] = new Cow("New cow", 50, 50);
+	myAnimals[0] = new Cow("New cow", 5000, 50);
 
 	myAnimals[1] = new Chicken("Joe", 5, 5);
 	myAnimals[2] = new Chicken("Big John", 17.75, 30);
 
-	myAnimals[3] = new Cow("Fsteak", 20, 100);
-	myAnimals[4] = new Cow("Cheese", 19.10, 85.5);
+	myAnimals[3] = new Cow("Fsteak", 2000, 100);
+	myAnimals[4] = new Cow("Cheese", 1390.10, 85.5);
 
 	myAnimals[5] = new Horse("Juan", 40, 200);
 	myAnimals[6] = new Horse("Trent", 45.25, 210.5);
@@ -47,10 +48,19 @@ Barn::Barn() {
 	myAnimals[10] = new Chicken("Small John", 17.75, 30);
 	myAnimals[11] = new Chicken("Medium John", 17.75, 30);
 
-	myAnimals[12] = new Horse("Mustang", 20, 75);
-	myAnimals[13] = new Horse("Mustang", 20, 75);
+	myAnimals[12] = new Horse("Mustang", 2150, 75);
+	myAnimals[13] = new Horse("Mustang", 2000, 75);
 
-	myAnimals[14] = new Cow("Thicc", 20, 120);
+	myAnimals[14] = new Cow("Thicc", 120, 1500);
+}
+
+inline void Barn::showAll()
+{
+	std::cout << "BARN CONTAINS \n";
+	for (int i = 0; i < sizeof(myAnimals) / sizeof(Animal*); i++) {
+		std::cout << "\t\t";
+		std::cout << myAnimals[i]->getName() << " the " << myAnimals[i]->getType() << "\n";
+	}
 }
 
 void Barn::feedAnimals()
@@ -71,7 +81,7 @@ void Barn::feedAnimals()
 void Barn::outToPasture(int i) 
 {
 	std::cout << myAnimals[i]->getName() << " has exceeded the top weight of " << myAnimals[i]->getTopWeight() << "\n";
-	std::cout << myAnimals[i]->getName() << " the " << myAnimals[i]->getType() << "is output pasture, and has been replace with ";
+	std::cout << myAnimals[i]->getName() << " the " << myAnimals[i]->getType() << " is output pasture, and has been replace with ";
 
 	Cow* CowPTR = dynamic_cast<Cow*> (myAnimals[i]);
 	if (CowPTR != nullptr)
